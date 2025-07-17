@@ -1,7 +1,8 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import { useState, useEffect } from 'react';
 
-const formatPhoneNumber = (phone) => {
+const formatPhoneNumber = (phone: string) => {
     if (!phone) return null;
     let cleaned = phone.replace(/\D/g, '');
     if (cleaned.startsWith('972')) return cleaned;
@@ -9,9 +10,29 @@ const formatPhoneNumber = (phone) => {
     return `972${cleaned}`;
 };
 
-export default function EventEditor({ eventId, token, onBack, onEventDeleted }) {
-    const [eventData, setEventData] = useState(null);
-    const [guests, setGuests] = useState([]);
+type EventEditorProps = {
+    eventId: string;
+    token: string;
+    onBack: () => void;
+    onEventDeleted: () => void;
+};
+
+export default function EventEditor({ eventId, token, onBack, onEventDeleted }: EventEditorProps) {
+    const t_eventEditor = useTranslations("EventEditor")
+    const t_common = useTranslations("Common")
+    type EventData = {
+        eventName: string;
+        concept: string;
+        // Add other event properties as needed
+    };
+    const [eventData, setEventData] = useState<EventData | null>(null);
+    type Guest = {
+        id: string;
+        name: string;
+        phone?: string;
+        rsvp_status: string;
+    };
+    const [guests, setGuests] = useState<Guest[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000';
@@ -37,24 +58,32 @@ export default function EventEditor({ eventId, token, onBack, onEventDeleted }) 
         if (eventId) fetchFullEvent();
     }, [eventId, token]);
 
-    const handleFormChange = (e) => {
-        setEventData({ ...eventData, [e.target.id]: e.target.value });
+    const handleFormChange = (e: { target: { id: any; value: any; }; }) => {
+        setEventData(prev => ({
+            eventName: e.target.id === "eventName" ? e.target.value : (prev?.eventName ?? ""),
+            concept: e.target.id === "concept" ? e.target.value : (prev?.concept ?? "")
+        }));
     };
 
-    const handleSaveEvent = async (e) => {
+    interface SaveEventResponse {
+        // Define properties if you expect a response body
+    }
+
+    const handleSaveEvent = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
         e.preventDefault();
         try {
-            await fetch(`${API_URL}/api/events/${eventId}`, {
+            const response = await fetch(`${API_URL}/api/events/${eventId}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(eventData),
             });
+            // Optionally handle response: const data: SaveEventResponse = await response.json();
             alert('האירוע עודכן בהצלחה!');
         } catch (error) { alert('שגיאה בעדכון האירוע.'); }
     };
 
     const handleDeleteEvent = async () => {
-        if (confirm("האם אתה בטוח שברצונך למחוק את האירוע כולו? אין דרך חזרה.")) {
+        if (confirm(t_eventEditor("confirmDeleteEvent"))) {
             try {
                 await fetch(`${API_URL}/api/events/${eventId}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
                 alert('האירוע נמחק.');
@@ -64,8 +93,12 @@ export default function EventEditor({ eventId, token, onBack, onEventDeleted }) 
     };
 
     const handleAddGuest = async () => {
-        const nameInput = document.getElementById('guest-name-input');
-        const phoneInput = document.getElementById('guest-phone-input');
+        const nameInput = document.getElementById('guest-name-input') as HTMLInputElement | null;
+        const phoneInput = document.getElementById('guest-phone-input') as HTMLInputElement | null;
+        if (!nameInput || !phoneInput) {
+            alert('שגיאה בגישה לשדות האורח.');
+            return;
+        }
         if (!nameInput.value) return alert('יש להזין שם אורח.');
         try {
             await fetch(`${API_URL}/api/events/${eventId}/guests`, {
@@ -79,7 +112,7 @@ export default function EventEditor({ eventId, token, onBack, onEventDeleted }) 
         } catch (error) { alert('שגיאה בהוספת אורח.'); }
     };
 
-    const handleDeleteGuest = async (guestId) => {
+    const handleDeleteGuest = async (guestId: string) => {
         if (confirm("האם אתה בטוח שברצונך למחוק את האורח?")) {
             try {
                 await fetch(`${API_URL}/api/guests/${guestId}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${token}` } });
@@ -134,7 +167,7 @@ export default function EventEditor({ eventId, token, onBack, onEventDeleted }) 
                         if (guest.phone) {
                             const formattedPhone = formatPhoneNumber(guest.phone);
                             const msg = encodeURIComponent(`שלום ${guest.name}, הוזמנת לאירוע "${eventData.eventName}"! פרטים ואישור הגעה: ${invitationLink}`);
-                            whatsappBtn = <a href={`https://wa.me/${formattedPhone}?text=${msg}`} target="_blank" className="bg-green-500 text-white text-xs font-bold py-1 px-2 rounded-md hover:bg-green-600">שלח</a>;
+                            whatsappBtn = <a href={`https://wa.me/${formattedPhone}?text=${msg}`} target="_blank" className="bg-green-500 text-white text-xs font-bold py-1 px-2 rounded-md hover:bg-green-600">{t_common("send")}</a>;
                         }
                         return (
                             <div key={guest.id} className="grid grid-cols-4 gap-4 items-center p-3 rounded-lg hover:bg-slate-50">
@@ -143,11 +176,11 @@ export default function EventEditor({ eventId, token, onBack, onEventDeleted }) 
                                 <div className="text-xs text-slate-400 direction-ltr text-left overflow-hidden text-ellipsis whitespace-nowrap">{invitationLink}</div>
                                 <div className="flex justify-end gap-2">
                                     {whatsappBtn}
-                                    <button onClick={() => handleDeleteGuest(guest.id)} className="bg-red-500 text-white text-xs font-bold py-1 px-2 rounded-md hover:bg-red-600">מחק</button>
+                                    <button onClick={() => handleDeleteGuest(guest.id)} className="bg-red-500 text-white text-xs font-bold py-1 px-2 rounded-md hover:bg-red-600">{t_eventEditor("deleteEvent")}</button>
                                 </div>
                             </div>
                         );
-                    }) : <p className="text-center text-slate-500 py-4">עדיין לא נוספו אורחים.</p>}
+                    }) : <p className="text-center text-slate-500 py-4">{t_eventEditor("noGuests")}</p>}
                 </div>
             </div>
         </div>

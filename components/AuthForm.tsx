@@ -7,7 +7,7 @@ interface AuthFormProps {
 }
 
 export default function AuthForm({ onLoginSuccess }: AuthFormProps) {
-    const t = useTranslations('AuthForm');
+    const t_authForm = useTranslations('AuthForm');
     const [isLoginView, setIsLoginView] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -43,10 +43,10 @@ export default function AuthForm({ onLoginSuccess }: AuthFormProps) {
     };
 
 	// שימוש בתרגומים במקום בטקסט קבוע
-	const formTitle = isLoginView ? t('welcomeTitle') : t('registerTitle');
-	const submitButtonText = isLoginView ? t('loginButton') : t('registerButton');
-	const switchViewText = isLoginView ? t('switchToRegister') : t('switchToLogin');
-	const switchViewLinkText = isLoginView ? t('switchToRegisterLink') : t('switchToLoginLink');
+	const formTitle = isLoginView ? t_authForm('loginTitle') : t_authForm('registerTitle');
+	const submitButtonText = isLoginView ? t_authForm('loginButton') : t_authForm('registerButton');
+	const switchViewText = isLoginView ? t_authForm('toRegisterPrompt') : t_authForm('toLoginPrompt');
+	const switchViewLinkText = isLoginView ? t_authForm('toRegisterLink') : t_authForm('toLoginLink');
 
 	return (
 		<div className='w-full max-w-md'>
@@ -75,7 +75,7 @@ export default function AuthForm({ onLoginSuccess }: AuthFormProps) {
 						type='submit'
 						disabled={isLoading}
 						className='w-full bg-primary-600 text-white p-3 rounded-lg font-bold hover:bg-primary-700 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:bg-primary-300'>
-						{isLoading ? t('loadingButton') : submitButtonText}
+						{isLoading ? t_authForm('loadingButton') : submitButtonText}
 					</button>
 				</form>
 			</div>
