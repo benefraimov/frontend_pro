@@ -1,0 +1,53 @@
+{
+  "AuthForm": {
+    "loginTitle": "ברוכים השבים",
+    "registerTitle": "יצירת חשבון חדש",
+    "emailPlaceholder": "אימייל",
+    "passwordPlaceholder": "סיסמה",
+    "loginButton": "התחברות",
+    "registerButton": "הרשמה",
+    "loadingButton": "טוען...",
+    "toRegisterPrompt": "אין לך חשבון?",
+    "toRegisterLink": "הירשם כאן",
+    "toLoginPrompt": "יש לך כבר חשבון?",
+    "toLoginLink": "התחבר"
+  },
+  "Dashboard": {
+    "logout": "התנתק",
+    "myEvents": "האירועים שלי",
+    "createNewEvent": "צור אירוע חדש",
+    "noEvents": "עדיין לא יצרת אירועים.",
+    "noEventsPrompt": "לחץ על הכפתור למעלה כדי להתחיל!"
+  },
+  "CreateEventModal": {
+    "title": "יצירת אירוע חדש עם AI",
+    "description": "תאר בכמה מילים את האירוע שאתה מדמיין, וה-AI יבנה עבורך תוכנית התחלתית.",
+    "promptPlaceholder": "לדוגמה: חתונה כפרית בטבע ל-200 איש עם אוכל טבעוני...",
+    "generateButton": "צור קונספט",
+    "generatingButton": "חושב...",
+    "aiSuggestion": "הצעה מה-AI:",
+    "saveButton": "שמור והוסף לרשימה",
+    "savingButton": "שומר...",
+    "closeButton": "סגור"
+  },
+  "EventEditor": {
+    "backToList": "< חזרה לרשימת האירועים",
+    "editTitle": "עריכת אירוע",
+    "guestManagementTitle": "ניהול אורחים",
+    "addGuestPlaceholder": "שם האורח",
+    "addPhonePlaceholder": "טלפון (אופציונלי)",
+    "addGuestButton": "הוסף",
+    "guestListTitle": "רשימת מוזמנים",
+    "noGuests": "עדיין לא נוספו אורחים.",
+    "saveChanges": "שמור שינויים באירוע",
+    "deleteEvent": "מחק אירוע זה",
+    "confirmDeleteEvent": "האם אתה בטוח שברצונך למחוק את האירוע כולו? אין דרך חזרה.",
+    "confirmDeleteGuest": "האם אתה בטוח שברצונך למחוק את האורח?"
+  },
+  "Common": {
+    "loading": "טוען...",
+    "error": "משהו השתבש",
+    "delete": "מחק",
+    "send": "שלח"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "AuthForm": {
+    "loginTitle": "Welcome Back",
+    "registerTitle": "Create a New Account",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "loadingButton": "Loading...",
+    "toRegisterPrompt": "Don't have an account?",
+    "toRegisterLink": "Register here",
+    "toLoginPrompt": "Already have an account?",
+    "toLoginLink": "Login"
+  },
+  "Dashboard": {
+    "logout": "Logout",
+    "myEvents": "My Events",
+    "createNewEvent": "Create New Event",
+    "noEvents": "You haven't created any events yet.",
+    "noEventsPrompt": "Click the button above to get started!"
+  },
+  "CreateEventModal": {
+    "title": "Create a New Event with AI",
+    "description": "Describe your dream event in a few words, and the AI will build a starting plan for you.",
+    "promptPlaceholder": "e.g., A rustic wedding in nature for 200 people with vegan food...",
+    "generateButton": "Generate Concept",
+    "generatingButton": "Thinking...",
+    "aiSuggestion": "AI Suggestion:",
+    "saveButton": "Save & Add to List",
+    "savingButton": "Saving...",
+    "closeButton": "Close"
+  },
+  "EventEditor": {
+    "backToList": "< Back to Event List",
+    "editTitle": "Edit Event",
+    "guestManagementTitle": "Guest Management",
+    "addGuestPlaceholder": "Guest Name",
+    "addPhonePlaceholder": "Phone (Optional)",
+    "addGuestButton": "Add",
+    "guestListTitle": "Guest List",
+    "noGuests": "No guests have been added yet.",
+    "saveChanges": "Save Event Changes",
+    "deleteEvent": "Delete This Event",
+    "confirmDeleteEvent": "Are you sure you want to delete this entire event? This action cannot be undone.",
+    "confirmDeleteGuest": "Are you sure you want to delete this guest?"
+  },
+  "Common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "delete": "Delete",
+    "send": "Send"
+  }
+}

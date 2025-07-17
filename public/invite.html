@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הזמנה לאירוע</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            background: #f8fafc;
+            text-align: center;
+            padding: 20px;
+            color: #334155;
+        }
+
+        .invitation-card {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            border-top: 8px solid #4f46e5;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #1e1b4b;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: #312e81;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.7;
+            color: #475569;
+        }
+
+        .rsvp-buttons {
+            margin-top: 40px;
+        }
+
+        button {
+            font-size: 1.2em;
+            padding: 15px 30px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+
+        #confirm-btn {
+            background-color: #16a34a;
+            color: white;
+        }
+
+        #decline-btn {
+            background-color: #dc2626;
+            color: white;
+        }
+
+        #confirm-btn:hover,
+        #decline-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="invitation-card">
+        <h1 id="invitation-headline">טוען את פרטי ההזמנה...</h1>
+        <h2 id="event-name"></h2>
+        <p id="invitation-body"></p>
+        <p><strong>קוד לבוש:</strong> <span id="dress-code"></span></p>
+        <hr style="margin: 30px 0; border-color: #e2e8f0;">
+        <p id="invitation-rsvp"></p>
+
+        <div class="rsvp-buttons">
+            <button id="confirm-btn">מגיע/ה בשמחה</button>
+            <button id="decline-btn">לא אוכל להגיע</button>
+        </div>
+        <p id="response-message" class="message"></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const API_URL = 'https://invitetous-back-pyflask.onrender.com'; // Hardcoded for the public page
+            const params = new URLSearchParams(window.location.search);
+            const eventId = params.get('eventId');
+            const guestId = params.get('guestId');
+            const card = document.querySelector('.invitation-card');
+
+            if (!eventId || !guestId) {
+                card.innerHTML = '<h1>שגיאה: קישור ההזמנה אינו תקין.</h1>';
+                return;
+            }
+
+            try {
+                // שימוש בנקודת ה-API הציבורית
+                const response = await fetch(`${API_URL}/api/public/events/${eventId}`);
+                if (!response.ok) throw new Error('Event not found');
+
+                const event = await response.json();
+
+                document.getElementById('invitation-headline').textContent = event.invitationHeadline;
+                document.getElementById('event-name').textContent = event.eventName;
+                document.getElementById('invitation-body').textContent = event.invitationBody;
+                document.getElementById('dress-code').textContent = `${event.dressCodeName} - ${event.dressCodeDesc}`;
+                document.getElementById('invitation-rsvp').textContent = event.invitationRsvp;
+                document.title = `הזמנה ל: ${event.eventName}`;
+
+            } catch (error) {
+                card.innerHTML = '<h1>אופס, לא הצלחנו לטעון את ההזמנה.</h1>';
+            }
+
+            const confirmBtn = document.getElementById('confirm-btn');
+            const declineBtn = document.getElementById('decline-btn');
+            const responseMessage = document.getElementById('response-message');
+
+            const handleRsvp = async (status) => {
+                try {
+                    const rsvpResponse = await fetch(`${API_URL}/api/update-rsvp/${guestId}`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ status })
+                    });
+                    const result = await rsvpResponse.json();
+                    responseMessage.textContent = result.message;
+                    confirmBtn.style.display = 'none';
+                    declineBtn.style.display = 'none';
+                } catch (err) {
+                    responseMessage.textContent = 'שגיאה בעדכון. נסה שוב.';
+                }
+            };
+
+            confirmBtn.addEventListener('click', () => handleRsvp('Confirmed'));
+            declineBtn.addEventListener('click', () => handleRsvp('Declined'));
+        });
+    </script>
+</body>
+
+</html>
