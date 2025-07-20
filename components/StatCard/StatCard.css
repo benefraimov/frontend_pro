@@ -1,0 +1,18 @@
+.stat-card {
+    padding: 1.5rem;
+}
+
+.stat-card-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-card-value {
+    font-size: 2.25rem;
+    font-weight: 700;
+}
+
+.stat-card-label {
+    color: var(--text-muted);
+}

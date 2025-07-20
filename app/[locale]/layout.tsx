@@ -1,38 +1,23 @@
-// app/[locale]/layout.tsx
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import { Inter } from 'next/font/google';
-import { routing } from '../../i18n/routing';
-import { LanguageSwitcher } from '../../components/LanguageSwitcher';
+import type { Metadata } from 'next';
+import { Toaster } from 'react-hot-toast';
+import StoreProvider from '@/lib/StoreProvider';
 
-import './globals.css';
+import '../globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+export const metadata: Metadata = {
+	title: 'EventOS.ai',
+	description: 'AI-Powered Event Management',
+};
 
-export function generateStaticParams() {
-	return routing.locales.map((locale) => ({ locale }));
-}
-
-export default async function LocaleLayout({ children, params: { locale } }: { children: React.ReactNode; params: { locale: string } }) {
-	// Ensure that the incoming `locale` is valid
-	if (!routing.locales.includes(locale as any)) {
-		notFound();
-	}
-
-	// Enable static rendering by providing the locale early
-	const messages = await getMessages({ locale });
-
-	console.log(`Layout - Loading locale: ${locale}`);
-
+export default function RootLayout({
+	children,
+}: Readonly<{
+	children: React.ReactNode;
+}>) {
 	return (
-		<html lang={locale} dir={locale === 'he' ? 'rtl' : 'ltr'}>
-			<body className={inter.className}>
-				<NextIntlClientProvider messages={messages} locale={locale}>
-						<LanguageSwitcher />
-					{children}
-				</NextIntlClientProvider>
-			</body>
-		</html>
+		<StoreProvider>
+			<Toaster position='bottom-center' />
+			{children}
+		</StoreProvider>
 	);
 }

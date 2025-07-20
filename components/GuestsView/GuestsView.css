@@ -1,0 +1,22 @@
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.status-confirmed {
+    background-color: #DEF7EC;
+    color: #047857;
+}
+
+.status-pending {
+    background-color: #FEF3C7;
+    color: #B45309;
+}
+
+.status-declined {
+    background-color: #FEE2E2;
+    color: #B91C1C;
+}

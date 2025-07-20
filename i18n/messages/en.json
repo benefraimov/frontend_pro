@@ -1,53 +1,104 @@
 {
-  "AuthForm": {
-    "loginTitle": "Welcome Back",
-    "registerTitle": "Create a New Account",
-    "emailPlaceholder": "Email",
-    "passwordPlaceholder": "Password",
+  "Auth": {
+    "loginTitle": "Login to EventOS.ai",
+    "loginSubtitle": "Enter your details to access your events",
+    "emailLabel": "Email Address",
+    "passwordLabel": "Password",
     "loginButton": "Login",
+    "noAccount": "Don't have an account?",
+    "registerLink": "Register here",
+    "registerTitle": "Create an Account",
+    "registerSubtitle": "Join EventOS.ai and start planning",
     "registerButton": "Register",
-    "loadingButton": "Loading...",
-    "toRegisterPrompt": "Don't have an account?",
-    "toRegisterLink": "Register here",
-    "toLoginPrompt": "Already have an account?",
-    "toLoginLink": "Login"
+    "haveAccount": "Already have an account?",
+    "loginLink": "Login here",
+    "loggingIn": "Logging in...",
+    "registering": "Creating account...",
+    "logout": "Logout"
+  },
+  "Events": {
+    "myEventsTitle": "My Events",
+    "myEventsSubtitle": "Manage all your events in one place",
+    "createEventButton": "Create New Event",
+    "createWithAITitle": "Create Event with AI",
+    "promptLabel": "Describe your event...",
+    "promptPlaceholder": "e.g., A bachelorette party in Tel Aviv for about 20 people",
+    "generateButton": "Generate with AI",
+    "generating": "Generating...",
+    "saveEventButton": "Save Event",
+    "deleteEvent": "Delete",
+    "confirmDeleteTitle": "Are you sure?",
+    "confirmDeleteText": "This action cannot be undone. All event data will be permanently deleted.",
+    "cancel": "Cancel"
   },
   "Dashboard": {
-    "logout": "Logout",
-    "myEvents": "My Events",
-    "createNewEvent": "Create New Event",
-    "noEvents": "You haven't created any events yet.",
-    "noEventsPrompt": "Click the button above to get started!"
+    "title": "Dashboard",
+    "subtitle": "Overview of your event",
+    "totalGuests": "Total Guests",
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "sentInvitations": "Invitations Sent"
   },
-  "CreateEventModal": {
-    "title": "Create a New Event with AI",
-    "description": "Describe your dream event in a few words, and the AI will build a starting plan for you.",
-    "promptPlaceholder": "e.g., A rustic wedding in nature for 200 people with vegan food...",
-    "generateButton": "Generate Concept",
-    "generatingButton": "Thinking...",
-    "aiSuggestion": "AI Suggestion:",
-    "saveButton": "Save & Add to List",
-    "savingButton": "Saving...",
-    "closeButton": "Close"
-  },
-  "EventEditor": {
-    "backToList": "< Back to Event List",
-    "editTitle": "Edit Event",
-    "guestManagementTitle": "Guest Management",
-    "addGuestPlaceholder": "Guest Name",
-    "addPhonePlaceholder": "Phone (Optional)",
-    "addGuestButton": "Add",
+  "Guests": {
+    "title": "Guest Management",
+    "subtitle": "Add, edit, and import your guest list",
+    "addGuestTitle": "Add New Guest",
+    "fullNameLabel": "Full Name",
+    "fullNamePlaceholder": "e.g., Israel Israeli",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "e.g., 050-1234567",
+    "addButton": "Add Guest",
     "guestListTitle": "Guest List",
-    "noGuests": "No guests have been added yet.",
-    "saveChanges": "Save Event Changes",
-    "deleteEvent": "Delete This Event",
-    "confirmDeleteEvent": "Are you sure you want to delete this entire event? This action cannot be undone.",
-    "confirmDeleteGuest": "Are you sure you want to delete this guest?"
+    "importButton": "Import from Excel",
+    "sendAllButton": "Send to All",
+    "tableName": "Name",
+    "tablePhone": "Phone",
+    "tableStatus": "Status",
+    "tableActions": "Actions",
+    "sendButton": "Send",
+    "deleteButton": "Delete"
   },
-  "Common": {
-    "loading": "Loading...",
-    "error": "Something went wrong",
-    "delete": "Delete",
-    "send": "Send"
+  "Suppliers": {
+    "title": "Supplier Management",
+    "subtitle": "All your event suppliers and services",
+    "supplierList": "Supplier List",
+    "tableName": "Supplier Name",
+    "tableCategory": "Category",
+    "tablePhone": "Contact Phone"
+  },
+  "Invitation": {
+    "title": "Invitation Design",
+    "subtitle": "Customize your invitation. Click an element to edit and drag it.",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "editTitle": "Editing '{elementId}'",
+    "contentLabel": "Content",
+    "fontLabel": "Font",
+    "sizeLabel": "Size (px)",
+    "colorLabel": "Color",
+    "styleLabel": "Style",
+    "alignLeft": "Align Left",
+    "alignCenter": "Align Center",
+    "alignRight": "Align Right",
+    "settingsTitle": "Invitation Settings",
+    "bgImageLabel": "Background Image",
+    "overlayLabel": "Overlay",
+    "overlayColorLabel": "Color",
+    "overlayOpacityLabel": "Opacity"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "guests": "Guest Management",
+    "invitation": "Invitation Design"
+  },
+  "Status": {
+    "confirmed": "Confirmed",
+    "pending": "Pending",
+    "declined": "Declined"
+  },
+  "Errors": {
+    "loginFailed": "Login failed. Please check your credentials.",
+    "registrationFailed": "Registration failed. Please try again.",
+    "generalError": "An unexpected error occurred."
   }
 }

@@ -1,53 +1,104 @@
 {
-  "AuthForm": {
-    "loginTitle": "ברוכים השבים",
-    "registerTitle": "יצירת חשבון חדש",
-    "emailPlaceholder": "אימייל",
-    "passwordPlaceholder": "סיסמה",
+  "Auth": {
+    "loginTitle": "התחברות ל-EventOS.ai",
+    "loginSubtitle": "הזן את פרטיך כדי לגשת לאירועים שלך",
+    "emailLabel": "כתובת אימייל",
+    "passwordLabel": "סיסמה",
     "loginButton": "התחברות",
+    "noAccount": "אין לך חשבון?",
+    "registerLink": "הירשם כאן",
+    "registerTitle": "יצירת חשבון חדש",
+    "registerSubtitle": "הצטרף ל-EventOS.ai והתחל לתכנן",
     "registerButton": "הרשמה",
-    "loadingButton": "טוען...",
-    "toRegisterPrompt": "אין לך חשבון?",
-    "toRegisterLink": "הירשם כאן",
-    "toLoginPrompt": "יש לך כבר חשבון?",
-    "toLoginLink": "התחבר"
+    "haveAccount": "יש לך כבר חשבון?",
+    "loginLink": "התחבר כאן",
+    "loggingIn": "מתחבר...",
+    "registering": "יוצר חשבון...",
+    "logout": "התנתקות"
+  },
+  "Events": {
+    "myEventsTitle": "האירועים שלי",
+    "myEventsSubtitle": "נהל את כל האירועים שלך במקום אחד",
+    "createEventButton": "צור אירוע חדש",
+    "createWithAITitle": "צור אירוע עם AI",
+    "promptLabel": "תאר את האירוע שלך...",
+    "promptPlaceholder": "למשל, מסיבת רווקות בתל אביב לכ-20 איש",
+    "generateButton": "צור עם AI",
+    "generating": "יוצר...",
+    "saveEventButton": "שמור אירוע",
+    "deleteEvent": "מחק",
+    "confirmDeleteTitle": "האם אתה בטוח?",
+    "confirmDeleteText": "לא ניתן לשחזר פעולה זו. כל נתוני האירוע יימחקו לצמיתות.",
+    "cancel": "ביטול"
   },
   "Dashboard": {
-    "logout": "התנתק",
-    "myEvents": "האירועים שלי",
-    "createNewEvent": "צור אירוע חדש",
-    "noEvents": "עדיין לא יצרת אירועים.",
-    "noEventsPrompt": "לחץ על הכפתור למעלה כדי להתחיל!"
+    "title": "דאשבורד",
+    "subtitle": "סקירה כללית של האירוע שלך",
+    "totalGuests": "סה״כ מוזמנים",
+    "confirmed": "אישורי הגעה",
+    "pending": "ממתינים",
+    "sentInvitations": "הזמנות שנשלחו"
   },
-  "CreateEventModal": {
-    "title": "יצירת אירוע חדש עם AI",
-    "description": "תאר בכמה מילים את האירוע שאתה מדמיין, וה-AI יבנה עבורך תוכנית התחלתית.",
-    "promptPlaceholder": "לדוגמה: חתונה כפרית בטבע ל-200 איש עם אוכל טבעוני...",
-    "generateButton": "צור קונספט",
-    "generatingButton": "חושב...",
-    "aiSuggestion": "הצעה מה-AI:",
-    "saveButton": "שמור והוסף לרשימה",
-    "savingButton": "שומר...",
-    "closeButton": "סגור"
-  },
-  "EventEditor": {
-    "backToList": "< חזרה לרשימת האירועים",
-    "editTitle": "עריכת אירוע",
-    "guestManagementTitle": "ניהול אורחים",
-    "addGuestPlaceholder": "שם האורח",
-    "addPhonePlaceholder": "טלפון (אופציונלי)",
-    "addGuestButton": "הוסף",
+  "Guests": {
+    "title": "ניהול אורחים",
+    "subtitle": "הוספה, עריכה וייבוא של רשימת האורחים שלך",
+    "addGuestTitle": "הוספת אורח חדש",
+    "fullNameLabel": "שם מלא",
+    "fullNamePlaceholder": "לדוגמה: ישראל ישראלי",
+    "phoneLabel": "מספר טלפון",
+    "phonePlaceholder": "לדוגמה: 050-1234567",
+    "addButton": "הוסף אורח",
     "guestListTitle": "רשימת מוזמנים",
-    "noGuests": "עדיין לא נוספו אורחים.",
-    "saveChanges": "שמור שינויים באירוע",
-    "deleteEvent": "מחק אירוע זה",
-    "confirmDeleteEvent": "האם אתה בטוח שברצונך למחוק את האירוע כולו? אין דרך חזרה.",
-    "confirmDeleteGuest": "האם אתה בטוח שברצונך למחוק את האורח?"
+    "importButton": "ייבוא מאקסל",
+    "sendAllButton": "שלח לכולם",
+    "tableName": "שם",
+    "tablePhone": "טלפון",
+    "tableStatus": "סטטוס",
+    "tableActions": "פעולות",
+    "sendButton": "שלח",
+    "deleteButton": "מחק"
   },
-  "Common": {
-    "loading": "טוען...",
-    "error": "משהו השתבש",
-    "delete": "מחק",
-    "send": "שלח"
+  "Suppliers": {
+    "title": "ניהול ספקים",
+    "subtitle": "כל הספקים והשירותים לאירוע שלך במקום אחד",
+    "supplierList": "רשימת ספקים",
+    "tableName": "שם הספק",
+    "tableCategory": "קטגוריה",
+    "tablePhone": "טלפון ליצירת קשר"
+  },
+  "Invitation": {
+    "title": "עיצוב הזמנה",
+    "subtitle": "התאם אישית את ההזמנה. לחץ על אלמנט כדי לערוך ולגרור אותו.",
+    "saveChanges": "שמור שינויים",
+    "saving": "שומר...",
+    "editTitle": "עריכת '{elementId}'",
+    "contentLabel": "תוכן",
+    "fontLabel": "פונט",
+    "sizeLabel": "גודל (px)",
+    "colorLabel": "צבע",
+    "styleLabel": "עיצוב",
+    "alignLeft": "יישור לשמאל",
+    "alignCenter": "יישור למרכז",
+    "alignRight": "יישור לימין",
+    "settingsTitle": "הגדרות הזמנה",
+    "bgImageLabel": "תמונת רקע",
+    "overlayLabel": "שכבת על",
+    "overlayColorLabel": "צבע",
+    "overlayOpacityLabel": "שקיפות"
+  },
+  "Sidebar": {
+    "dashboard": "דאשבורד",
+    "guests": "ניהול אורחים",
+    "invitation": "עיצוב הזמנה"
+  },
+  "Status": {
+    "confirmed": "אישור הגעה",
+    "pending": "ממתין",
+    "declined": "לא מגיע"
+  },
+  "Errors": {
+    "loginFailed": "ההתחברות נכשלה. אנא בדוק את הפרטים ונסה שוב.",
+    "registrationFailed": "ההרשמה נכשלה. אנא נסה שוב.",
+    "generalError": "אירעה שגיאה בלתי צפויה."
   }
 }

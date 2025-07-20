@@ -1,0 +1,5 @@
+{
+    "name": "EventOS.ai - AI Event Management",
+    "description": "A full-stack event management platform powered by AI. Features user authentication, dynamic event dashboards, guest management, and AI-assisted event creation.",
+    "requestFramePermissions": []
+}
